@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+
+<h2>Index</h2>
+<!--Add Jquery Datatable reference files-->
+<link rel="stylesheet" href="//cdn.datatables.net/1.10.9/css/jquery.dataTables.min.css" />
+<div style="width:90%;">
+    <table id="Jdatatable" class="table table-responsive table-bordered">
+        <thead>
+            <tr>
+                <th>Sno.</th>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Age</th>
+                <th>Address</th>
+                <th>Email</th>
+
+            </tr>
+        </thead>
+    </table>
+</div>
+@section scripts{
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="//cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+        debugger;
+        $("#Jdatatable").DataTable({
+            "ajax": {
+                "url": "/Home/GetData",
+                "type": "GET",
+                "datatype":"json"
+            },
+            "columns": [
+                        { "data": "Id", "autoWidth": true },
+                        { "data": "Name", "autoWidth": true },
+                        { "data": "Position", "autoWidth": true },
+                        { "data": "Age", "autoWidth": true },
+                        { "data": "Address", "autoWidth": true },
+                        { "data": "Email", "autoWidth": true }
+
+            ]
+        });
+    });
+    </script>
+}

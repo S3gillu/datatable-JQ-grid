@@ -1,0 +1,75 @@
+﻿@model Datatable.Models.WorkerVM
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>WorkerVM</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(m => m.Employees.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Employees.Name, new { placeholder = "Enter Name", @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Employees.Name)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Employees.Age, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Employees.Age, new { placeholder = "Enter Age", @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Employees.Age)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Employees.StartDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Employees.StartDate, new { placeholder = "Enter Your Start Date", @type = "date", @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Employees.StartDate)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Employees.Position, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.Employees.Position, new SelectList(Model.List, "PositionName", "PositionName"), "Select Your Position", new { @id = "c", @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Employees.Position)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Employees.Address, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(m => m.Employees.Address, new { placeholder = "Enter Address", @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Employees.Address)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Employees.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Employees.Email, new { placeholder = "Enter Email", @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Employees.Email)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
